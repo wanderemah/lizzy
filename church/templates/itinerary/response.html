@@ -1,0 +1,8 @@
+{% extends 'forms.html' %}
+{% block title %}Respond{% endblock %}
+{% block legend %}Response{% endblock %}
+ {% block form_data %}
+        {{ myform.as_p }}
+        <input type="submit" value="Add" class="submit">
+        <a href="{% url 'church:eventmember' username %}" class="cancel">Cancel</a>
+{% endblock %}

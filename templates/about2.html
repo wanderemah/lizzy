@@ -1,0 +1,268 @@
+
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+{##}
+{% block content %}
+    <div class="fixed-action-btn">
+{#    <a href="#" class="btn-floating teal darken-4 hoverable btn-large z-depth-3"><i class="material-icons large">settings</i></a>#}
+{#    <ul>#}
+{#        <li><a href="{% url 'admin:index' %}" class="btn-floating  teal lighten-4 blue btn-large" style="font-size: 12px;">admin</a></li>#}
+{#        <li><a href="{% url 'logout' %}" class="btn-floating teal lighten-1 teal btn-large" style="font-size: 10px;">logout</a></li>#}
+{#        <li><a href="{% url 'home2' username %}" class="na btn-floating brown btn-large" style="font-size: 12px;"><i class="material-icons large">home</i></a></li>#}
+{#    </ul>#}
+</div>
+       {% load static from staticfiles %}
+        <div class="hide-on-med-and-down" style="position: fixed; z-index: 1; background-color: rgba(0,0,0,0.7); margin-left: 157px; padding: 6px 4.5px 6px 4px; font-size: 4px;">
+            <ul class="pagination">
+                <li><a href="#title" class="orange-text" style="padding-left: 2px; padding-right: 2px;">Title</a></li>
+                <li><a href="#logo" class="orange-text">Logo</a></li>
+                <li><a href="#motto" class="orange-text" style="padding-left: 2px; padding-right: 2px;">Motto</a></li>
+                <li><a href="#vision" class="orange-text">Vision</a></li>
+                <li><a href="#mission" class="orange-text">Mission</a></li>
+                <li><a href="#background" class="orange-text" style="padding-left: 2px; padding-right: 2px;">Background</a></li>
+                <li><a href="#images" class="orange-text">Images</a></li>
+                <li><a href="#aims" class="orange-text">Aims</a></li>
+                <li><a href="#values" class="orange-text">Values</a></li>
+                <li><a href="#programmes" class="orange-text" style="padding-left: 2px; padding-right: 2px;">Programmes</a></li>
+		    </ul>
+        </div>
+
+
+        <div class="container white-text cont" style="height: 5800px; background-color: rgba(0,0,0,0.4); padding: 40px; z-index: 1;">
+            <div id="title" class="transparent" style="height: 170px;"></div>
+            <h2 class="center-align scrollspy blue-text heading">ONE MORE SOUL OUTREACH MINISTRIES INTERNATIONAL </h2><div id="logo" class="transparent" style="height: 170px;"></div><p class="center-align" style="padding-left: 285px;"><img src="{% static 'images/FB_IMG_1534414706878.jpg' %}" alt="img" height="90px" width="90px" id="logo" class="scrollspy materialboxed responsive-img" data-caption="One More Soul Outreach Ministries International (OMSOM)"></p><br>
+    <div id="motto" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Motto</h4>
+            <p class="center-align" style="font-size: 20px;">
+                Touch one, Touch all
+            </p><br>
+    <div id="vision" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Vision</h4>
+            <p class="center-align" style="font-size: 20px;">
+                A generation filled with the love of our Lord Jesus Christ
+            </p><br>
+    <div id="mission" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Mision</h4>
+            <p class="center-align" style="font-size: 20px;">
+                To reach out to the world and transform generations with the gospel and love of Jesus Christ through music, dance and drama, conselling and career guidance in schools, churches, universities and other institutuions of learning, communities and nations, and support the needy by providing food, health care and shelter for a transformed people.
+            </p><br>
+    <div id="background" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Background</h4>
+            <p style="font-size: 20px;">
+                One More Soul Outreach Ministries INTERNATIONAL (OMSOM) is an independent entity, an initiative by some of the youth of St. Luke's Ntinda church of Uganda, Kampala diocese, and began its operations in 2013. The mission team is comprised of young people including students from various learning institutions and mature persons with a zeal for spreading the gospel of Jesus Christ across the globe.
+                <br>
+                OMSOM International conducts community outreach programs like school and church missions, door to door ministry, youth conferences and seminars, counselling and career guidance and carries out charitable work especially for the poor communities.
+                <br>
+                The ministry sets out to win souls for Christ. As God desires, to <em>"have all men to be saved, and to come unto the knowledge of the truth."</em> 1 Timothy 2:4 as well as spiritual nurturing in the lives of the people that we reach out to i the various institutions and communities, to grow and be equipped with the Word
+            </p><br>
+    <div id="images" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text" style="margin-bottom: 70px;">Images</h4>
+            <div class="slider" style="z-index: 0;">
+			<ul class="slides">
+				<li>
+					<img src="{% static 'images/butterfly_patterns_lines_insect_68028_1920x1080.jpg' %}" alt="img">
+					<div class="caption center-align">
+						<h3>OMSOM</h3>
+						<h5 class="light grey-text text-lighten-3">Our church</h5>
+					</div>
+
+				</li>
+                <li>
+					<img src="{% static 'images/FB_IMG_1534413679330.jpg' %}" alt="img">
+					<div class="caption center-align">
+						<h3>OMSOM</h3>
+						<h5 class="light grey-text text-lighten-3">Our church</h5>
+					</div>
+
+				</li>
+				<li>
+					<img src="{% static 'images/FB_IMG_1534413802583.jpg' %}" alt="img">
+					<div class="caption left-align">
+						<h3>It s grandeur</h3>
+						<h5 class="light grey-text text-lighten-3"> WOow</h5>
+					</div>
+
+				</li>
+				<li>
+					<img src="{% static 'images/electric_guitar_instrument_string_17845_1920x1080.jpg' %}" alt="img">
+					<div class="caption right-align">
+						<h3>Lots of fun</h3>
+						<h5 class="light grey-text text-lighten-3">Guitar</h5>
+					</div>
+
+				</li>
+                <li>
+					<img src="{% static 'images/FB_IMG_1534413698598.jpg' %}" alt="img">
+					<div class="caption left-align">
+						<h3>Road trips</h3>
+						<h5 class="light grey-text text-lighten-3">On the highway</h5>
+					</div>
+
+				</li>
+                <li>
+					<img src="{% static 'images/FB_IMG_1534413710947.jpg' %}" alt="img">
+					<div class="caption center-align">
+						<h3>Exercise</h3>
+						<h5 class="light grey-text text-lighten-3">Work out in Christ</h5>
+					</div>
+
+				</li>
+                <li>
+					<img src="{% static 'images/FB_IMG_1534413743132.jpg' %}" alt="img">
+					<div class="caption right-align">
+						<h3>Muchomo</h3>
+						<h5 class="light grey-text text-lighten-3">The feast never stops</h5>
+					</div>
+
+				</li>
+                <li>
+					<img src="{% static 'images/FB_IMG_1534414120170.jpg' %}" alt="img">
+					<div class="caption left-align">
+						<h3>Beautiful people</h3>
+						<h5 class="light grey-text text-lighten-3">Live life in Christ</h5>
+					</div>
+
+				</li>
+
+			</ul>
+		</div>
+    <div id="aims" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Aims and Objectives</h4>
+            <p style="font-size: 20px;">
+                In furtherance of the mission of the Organisation, it may, among other things, carry out the following objectives:
+                <ol style="line-height: 28px;">
+                    <li>To preach the gospel of Jesus Christ to all nations in the world</li>
+                    <li>To fulfill the great commission of Jesus Christ through evangelistic missions in schools and higher institutions of learning, churches and communities</li>
+                    <li>To re-enforce sound Biblical teaching among the young generation through teahcings of the scriptures, Bible exposition and discipleship</li>
+                    <li>To support chaplains, counsellors, youth leaders, and clergy in handling young people in school through training programs</li>
+                    <li>To provide necessary guidance and counselling with the aim of restoring every sol to its pre-ordained life in God</li>
+                    <li>To participate in the direct relief of poverty, sickness, suffering and distress misfortune, disability, destitution or helplessness of nations regardless of sex, race, ethnic background, religion, political beliefs or marital status</li>
+                    <li>To provide care, guidance and counselling for parentless children or children with single parents who are socially and economically disadvantaged</li>
+                    <li>To raise funds for awareness of the objectives of th e Organisation</li>
+                    <li>To establish children's homes, medical services, agricultural projects and educational institutions at all levels of instruction</li>
+                    <li>To equip the vulnerable children and young women with practical skills to empower them for positive community transformation</li>
+                    <li>To assist other bodies whose objectives are similar  to those of the organisation.</li>
+                    <li>To establish partnerships with other private sector organizations-commercial and NGOs, whether local or international, interested in evangelism of the gospel 0f Jesus Christ</li>
+                    <li>To establish formal or informal partnerships with the Governments of Uganda and its ministries and agencies, municipal, local or otherwise, multilateral donor organisations, Ugandan and international non-government organisations and foreign governments  and their ministries or agencies,  and other person s which may seem conducive to the Organisation's objectives </li>
+                    <li>To do any other act and thing and to exercise any powers for the purpose od attaining or furthering of the objects herein stated</li>
+                </ol>
+            </p><br>
+    <div id="values" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Values</h4>
+            <p class="center-align" style="font-size: 20px;">
+                2 Peter 1:5-7
+                <ol>
+                    <li style="list-style-type: circle;">Diligence</li>
+                    <li style="list-style-type: circle;">Virtue</li>
+                    <li style="list-style-type: circle;">Knowledge</li>
+                    <li style="list-style-type: circle;">Self-control</li>
+                    <li style="list-style-type: circle;">Godliness</li>
+                    <li style="list-style-type: circle;">Love</li>
+                    <li style="list-style-type: circle;">Mutual Affection</li>
+                    <li style="list-style-type: circle;">Commitment</li>
+                </ol>
+            </p><br>
+            <div id="programmes" class="transparent" style="height: 170px;"></div>
+            <h4 class="center-align scrollspy blue-text">Our Programmes</h4>
+            <p class="center-align" style="font-size: 20px;">
+                <ol style="list-style-type: armenian;">
+                    <li style="list-style-type: disc;">School and community outreaches</li>
+                    <li style="list-style-type: disc;">Door to door evangelism</li>
+                    <li style="list-style-type: disc;">Youth and adult conferences</li>
+                    <li style="list-style-type: disc;">Seminars</li>
+                    <li style="list-style-type: disc;">Charity and Counselling</li>
+                    <li style="list-style-type: disc;">Global Missions</li>
+                    <li style="list-style-type: disc;">Improving Community Livelihood</li>
+                </ol>
+            </p><br>
+        </div>
+    <style>
+        @media(max-width:1330px) {
+
+        }
+        @media(max-width:1030px) {
+
+        }
+
+        @media(max-width:980px) {
+
+        }
+
+        @media(max-width:880px) {
+            .cont{
+                height: 9200px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+        }
+
+        @media(max-width:700px) {
+            .cont{
+                height: 9200px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+        }
+
+
+        @media(max-width:780px) {
+            .cont{
+                height: 8200px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+        }
+
+        @media(max-width:680px) {
+            .cont{
+                height: 6250px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+
+
+        @media(max-width:580px) {
+            .cont{
+                height: 6850px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .cont{
+                height: 8200px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+        }
+        @media(max-width:390px) {
+            .cont{
+                height: 9950px;
+                background-color: rgba(0,0,0,0.4);
+                margin-bottom: 50px;
+            }
+            .heading{
+                font-size: 25px;
+            }
+        }
+    </style>
+
+{% endblock %}
+{#</body>#}
+{#</html>#}

@@ -1,0 +1,8 @@
+{% extends 'forms.html' %}
+{% block title %}Query{% endblock %}
+{% block legend %}Query{% endblock %}
+{% block form_data %}
+        {{ yform.as_p }}
+        <input type="submit" value="Add" class="submit">
+    <a href="{% url 'church:eventmember' username %}" class="cancel">Cancel</a>
+{% endblock %}

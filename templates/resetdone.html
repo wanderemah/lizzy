@@ -1,0 +1,191 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>{% block title %}Base{% endblock %}</title>
+    <script src="{% static 'javascript/jquery-3.3.1.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet'>
+	<link rel="stylesheet" type="text/css" href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="{% static 'javascript/materialize.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/materialize.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/genericons.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/swiper.min.css' %}">
+    <script src="{% static 'javascript/swiper.min.js' %}"></script>
+
+{% block style %}{% endblock %}
+</head>
+<body style="background-image: url('/static/images/interest-rates-magaripoa.jpg'); background-size: cover; background-attachment: fixed; background-repeat: no-repeat;">
+
+        <ul id="mobile-demo" class="side-nav">
+            <li class="na" style="margin-right: 20px;">
+                <a href="{% url 'church:profile' username %}">
+                {% if user %}
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                    {% else %}
+                        {% if user.gender == 'M' %}
+                            <img src="{% static 'images/man.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% else %}
+                            <img src="{% static 'images/mani.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% endif %}
+                    {% endif %}
+                {% endif %}
+                </a>
+            </li>
+            <li><a href="{% url 'church:groups' username %}" class="na" style="margin-right: 20px;">Groups</a></li>
+            <li><a href="{% url 'church:eventmember' username %}" class="na" style="margin-right: 20px;">Events</a></li>
+            <li><a href="{% url 'church:service' username %}" class="na" style="margin-right: 20px;">Services</a></li>
+{#            <li><a href="#" class="dropdown-button na" data-activates="dropdown1" style="margin-right: 20px;">Gallery<i class="material-icons right">arrow_drop_down</i></a></li>#}
+            <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:videos' username %}">Videos</a></li>
+            <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:audios' username %}">Audios</a></li>
+            <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:documents' username %}">Documents</a></li>
+            <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:images' username %}">Pictures</a></li>
+            <li><a href="{% url 'church:members' username %}" class="na" style="margin-right: 20px;">Leadership</a></li>
+            <li><a href="{% url 'contacts' username %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+
+        </ul>
+
+    <ul id="dropdown1" class="dropdown-content">
+		<li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:videos' username %}">Videos</a></li>
+        <li class="divider"></li>
+        <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:audios' username %}">Audios</a></li>
+        <li class="divider"></li>
+        <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:documents' username %}">Documents</a></li>
+        <li class="divider"></li>
+        <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:images' username %}">Pictures</a></li>
+	</ul>
+<nav class="stack" style="z-index: 1;">
+    <div class="nav-wrapper black lighten-5">
+{#        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>#}
+        <span class="slogo transparent" style="border-style: solid; border-width: 0px 0px 0px 2px; border-color: grey;"><a href="{% url 'home' %}" class="brand-logo logo blue-text" style="font-size: 30px;">OMSOM</a></span>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down" id="nav-mobile">
+{#            <li><a href="{% url 'home' %}" class="na">Home</a></li>#}
+{#            <li><a href="{% url 'about' %}" class="na">About</a></li>#}
+            <ul id="dropdown1" class="dropdown-content blue-grey lighten-5">
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:videos' username %}">Videos</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:audios' username %}">Audios</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:documents' username %}">Documents</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:images' username %}">Pictures</a></li>
+	        </ul>
+            <li><a href="{% url 'church:groups' username %}" class="na" style="margin-right: 20px;">Groups</a></li>
+            <li><a href="{% url 'church:eventmember' username %}" class="na" style="margin-right: 20px;">Events</a></li>
+            <li><a href="{% url 'church:service' username %}" class="na" style="margin-right: 20px;">Services</a></li>
+            <li><a href="#" class="dropdown-button na" data-activates="dropdown1" style="margin-right: 20px;">Gallery<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url 'church:members' username %}" class="na" style="margin-right: 20px;">Leadership</a></li>
+            <li><a href="{% url 'contacts' username %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+            <li class="na" style="margin-right: 20px;">
+                <a href="{% url 'church:profile' username %}">
+                {% if user %}
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                    {% else %}
+                        {% if user.gender == 'M' %}
+                            <img src="{% static 'images/man.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% else %}
+                            <img src="{% static 'images/mani.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% endif %}
+                    {% endif %}
+                {% endif %}
+                </a>
+            </li>
+{#            <li class="teal"><a href="{% url 'admin:index' %}" class="na">Admin</a></li>#}
+        </ul>
+        <ul id="mobile-demo" class="side-nav">
+             <ul id="dropdown1" class="dropdown-content blue-grey lighten-5">
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:videos' username %}">Videos</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:audios' username %}">Audios</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:documents' username %}">Documents</a></li>
+                <li class="divider"></li>
+                <li style="margin-top:0px; padding: 5px;"><a href="{% url 'church:images' username %}">Pictures</a></li>
+	        </ul>
+            <li class="na" style="margin-right: 20px;">
+                <a href="{% url 'church:profile' username %}">
+                {% if user %}
+                    {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture.url }}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                    {% else %}
+                        {% if user.gender == 'M' %}
+                            <img src="{% static 'images/man.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% else %}
+                            <img src="{% static 'images/mani.jpg' %}" class="circle responsive-img" alt="image" width="50px" height="50px" style="margin-bottom: -10px; margin-right: 10px;">{{ user.user }}
+                         {% endif %}
+                    {% endif %}
+                {% endif %}
+                </a>
+            </li>
+            <li><a href="{% url 'church:groups' username %}" class="na" style="margin-right: 20px;">Groups</a></li>
+            <li><a href="{% url 'church:eventmember' username %}" class="na" style="margin-right: 20px;">Events</a></li>
+            <li><a href="{% url 'church:service' username %}" class="na" style="margin-right: 20px;">Services</a></li>
+            <li><a href="#" class="dropdown-button na" data-activates="dropdown1" style="margin-right: 20px;">Gallery<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url 'church:members' username %}" class="na" style="margin-right: 20px;">Leadership</a></li>
+            <li><a href="{% url 'contacts' username %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+{#            <li class="teal"><a href="{% url 'admin:index' %}" class="na">Admin</a></li>#}
+        </ul>
+    </div>
+</nav>
+<div class="fixed-action-btn">
+    <a href="#" class="btn-floating teal darken-4 hoverable btn-large z-depth-3"><i class="material-icons large">settings</i></a>
+    <ul>
+{#        <li><a href="{% url 'admin:index' %}" class="btn-floating  teal lighten-4 blue btn-large" style="font-size: 12px;" target="_blank">admin</a></li>#}
+        <li><a href="{% url 'logout' %}" class="btn-floating teal lighten-1 teal btn-large" style="font-size: 10px;">logout</a></li>
+        <li><a href="{% url 'about2' username %}" class="na btn-floating black btn-large" style="font-size: 12px;">About</a></li>
+        <li><a href="{% url 'home' %}" class="na btn-floating brown btn-large" style="font-size: 12px;"><i class="material-icons large">home</i></a></li>
+    </ul>
+</div>
+<div class="container cont" style="background-color:">
+    <div class="row">
+        <div class="col s12">
+{% block content %}
+<h1 class="center-align white-text" style="padding-top: 10px; padding-bottom: 10px;">Welcome {{ username }} ! <br><br>
+    {% if user %}
+        {% if user.profile_picture %}
+            <img src="{{ user.profile_picture.url }}" class="circle responsive-img" alt="image" width="300px" height="300px" style="margin-bottom: -10px; margin-right: 10px;">
+        {% else %}
+            {% if user.gender == 'M' %}
+                <img src="{% static 'images/man.jpg' %}" class="circle responsive-img" alt="image" width="300px" height="300px" style="margin-bottom: -10px; margin-right: 10px;">
+             {% else %}
+                <img src="{% static 'images/mani.jpg' %}" class="circle responsive-img" alt="image" width="300px" height="300px" style="margin-bottom: -10px; margin-right: 10px;">
+             {% endif %}
+        {% endif %}
+    {% endif %}
+</h1>
+    <p class="center-align white-text" style="margin-bottom: 71px; background-color: rgba(0,0,0,0.3);">Am email as been sent to you in order to change your password.
+    </p>
+{% endblock %}
+        </div>
+    </div>
+</div>
+<div class="page-footer" style="background-color: rgba(0,0,0,0.5); padding: 20px; margin-top: 0px;"><p class="white-text center-align">©<span style="font-size: 20px; padding:3px;">OMSOM</span>
+    <br> <br>designed by
+    <a href="https://plus.google.com/114477343094652939596" class="blue-text text-lighten-3" style=" font-family: Comic Sans MS;" target="_blank"><b>fatboyWeb</b></a></p></div>
+    <script type="text/javascript">
+		$(document).ready(function(){
+		    $(".parallax").parallax();
+			$(".button-collapse").sideNav();
+			$(".slider").slider({full_wiidth:true, indicators:false, transition:500, interval:6000, height: 400});
+			$(".fixed-action-button").floatingActionButton();
+			$(".parallax").parallax();
+			$(".carousel").carousel();
+			$(".carousel.carousel-slider").carousel({full_width:true});
+			$(".modal").modal();
+			$(".autocomplete").autocomplete({
+				data:{"aruba":null,"cancun":null,"hawai":null}
+			});
+			$(".scrollspy").scrollspy();
+
+
+		});
+	</script>
+</body>
+</html>

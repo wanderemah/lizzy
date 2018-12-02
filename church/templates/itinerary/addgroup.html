@@ -1,0 +1,8 @@
+{% extends 'forms.html' %}
+{% block title %}Add group{% endblock %}
+{% block legend %}Add group{% endblock %}
+ {% block form_data %}
+        {{ myform.as_p }}
+        <input type="submit" value="Add" class="submit">
+        <a href="{% url 'church:groups' %}" class="cancel">Cancel</a>
+{% endblock %}

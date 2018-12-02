@@ -1,0 +1,12 @@
+{% extends 'forms.html' %}
+{% block title %}Update Profile{% endblock %}
+{% block legend %}User Profile{% endblock %}
+{% block form_data %}
+    {% for field in form %}
+        <span>{{ field.errors }}</span>
+        <label class="label">{{ field.label_tag }}</label>
+        <span>{{ field }}</span><br><br><br>
+    {% endfor %}
+    <input type="submit" value="Update" class="submit update" style="margin-left: 190px;">
+{% endblock %}
+

@@ -1,0 +1,198 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Form{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'CSS/forms.css' %}">
+</head>
+<body style="margin: 0px; background-image: url('/static/images/interest-rates-magaripoa.jpg');">
+<div style="position: fixed; width: 1500px;" class="logb">
+    <p class="logo" style="color: blue; background-color: rgba(0,0,0,0.5);">OMSOM</p>
+</div>
+<div class="body" style="height: 1150px; padding-top: 150px; margin: 0px;">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="fieldset">
+            <legend class="legend">{% block legend %}My info{% endblock %}</legend>
+            {% block form_data %}
+            {% endblock %}
+        </fieldset>
+    </form>
+    <style>
+        @media(max-width:1030px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 500px;
+            }
+            .body{
+                padding-left: 200px;
+                width: 1200px;
+            }
+            .fieldset{
+                width: 500px;
+            }
+            .update{
+                margin-left: 190px;
+            }
+        }
+
+        @media(max-width:980px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 450px;
+            }
+            .body{
+                padding-left: 200px;
+                width: 1100px;
+            }
+            .fieldset{
+                width: 400px;
+            }
+            .update{
+                margin-left: 170px;
+            }
+        }
+
+        @media(max-width:880px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 430px;
+            }
+            .body{
+                padding-left: 220px;
+                width: 1000px;
+            }
+            .fieldset{
+                width: 400px;
+            }
+            .update{
+                margin-left: 150px;
+            }
+        }
+
+        @media(max-width:780px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 330px;
+            }
+            .body{
+                padding-left: 120px;
+                width: 900px;
+            }
+            .fieldset{
+                width: 400px;
+            }
+            .update{
+                margin-left: 130px;
+            }
+        }
+
+        @media(max-width:680px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 230px;
+            }
+            .body{
+                padding-left: 100px;
+                width: 800px;
+            }
+            .fieldset{
+                width: 300px;
+            }
+            .update{
+                margin-left: 110px;
+            }
+        }
+
+
+        @media(max-width:580px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 130px;
+            }
+            .body{
+                padding-left: 100px;
+                width: 700px;
+            }
+            .fieldset{
+                width: 200px;
+            }
+            .update{
+                margin-left: 90px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 120px;
+            }
+            .body{
+                padding-left: 50px;
+                width: 600px;
+            }
+            .fieldset{
+                width: 100px;
+            }
+            .update{
+                margin-left: 70px;
+            }
+        }
+
+        @media(max-width:390px) {
+            .logb{
+                width: 100px;
+                padding-left: 0px;
+            }
+            .logo{
+                text-align: left;
+                padding-left: 80px;
+            }
+            .body{
+                padding-left: 15px;
+                width: 500px;
+
+            }
+            .fieldset{
+                width: 80px;
+            }
+            .update{
+                margin-left: 50px;
+            }
+        }
+    </style>
+
+</div>
+    <p style="text-align: center; background-color: rgba(0,0,0,0.8); margin: 0px; padding: 20px; color: white;">©<a href="#" style=" font-family: Comic Sans MS; text-decoration: none; color: white;" target="_blank">fatboyWeb</a></p>
+
+</body>
+</html>

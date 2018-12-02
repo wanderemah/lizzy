@@ -1,0 +1,130 @@
+
+{% extends 'base.html' %}
+{% block title %}{{ groups.group }}{% endblock %}
+{% block content %}
+    {% load static from staticfiles %}
+    <div class="card blue-grey lighten-1" style="margin-bottom: 250px;">
+        {% if present > 0 %}
+            <a href="{% url 'church:grouptools' username groups.group %}" class="btn-floating white-text teal darken-4 secondary-content z-depth-2" style="z-index: 0; margin-top: 25px; margin-right: 25px;"><i class="material-icons">settings</i></a>
+        {% else %}
+            <a href="{% url 'church:grouptools' username groups.group %}" class="btn-floating white-text teal darken-4 secondary-content z-depth-2 disabled" style="z-index: 0; margin-top: 25px; margin-right: 25px;"><i class="material-icons">settings</i></a>
+        {% endif %}
+        <div class="card-content white-text">
+            <div class="container left-align">
+                <ul class="collectiion with-header">
+                    <li class="collection-header"><h3 class="orange-text center-align">{{ groups.group }}</h3><div id="members" class="transparent" style="height: 100px;"><p class="white-text scrollspy" style="padding-top: 7px;"><em>If you wish to join,please await approval. If approved, your name will be removed from the <a href="#aspirants" class="black-text">ASPIRANTS</a> section and be added to the <a href="#members" class="black-text">MEMBERS</a> section below. You can contribute to the group by offering a pledge in the <a href="#pledges" class="black-text">PLEDGES</a> section.</em></p></div><h4>Members</h4><p class="black-text"><a href="#pledges" class="btn-flat black-text blue-grey">PLEDGES</a> <a href="#aspirants" class="btn-flat black-text blue-grey">ASPIRANTS</a></p></li>
+                    <div class="card-panel blue-grey darken-2"><br>
+                        <a href="{% url 'church:addgroup' username groups.group %}" class="btn white-text secondary-content waves-effect waves-teal" style="z-index: 0; margin-top: -25px;">Join</a>
+                    {% for person in groups.member_set.all %}
+                        {% for member in members %}
+                            {% if person %}
+                                {% if person.member == member.full_name %}
+                                    {% if member.profile_picture %}
+                                        <li><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{{ member.profile_picture.url }}" class="circle responsive-img" alt="image" width="70px" height="70px" style="margin-bottom: -20px; margin-right: 10px;">{{ member.full_name }}</a><br><br>
+                                    {% else %}
+                                        {% if member.gender == 'M' %}
+                                            <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{% static 'images/male.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;">{{ member.full_name }}</a><br><br>
+                                         {% else %}
+                                            <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{% static 'images/female.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;">{{ member.full_name }}</a><br><br>
+                                         {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+
+            <div id="pledges" class="transparent" style="height: 170px;"></div>
+            <div class="card-content white-text">
+                <div class="container left-align">
+                    <ul class="collectiion with-header">
+                        <li class="collection-header"><h4>Pledges</h4><p class="black-text"><a href="#members" class="btn-flat black-text blue-grey">MEMBERS</a> <a href="#aspirants" class="btn-flat black-text blue-grey">ASPIRANTS</a></p></li>
+                        <div class="card-panel blue-grey darken-2 scrollspy"><br>
+                            <a href="{% url 'church:pledge' username groups.group %}" class="btn teal secondary-content" style="margin-top: -25px;">Pledge</a>
+                            {% if groups.pledge_set.all %}
+                            {% for plee in groups.pledge_set.all  %}
+                                {% for member in members %}
+                                    {% if plee %}
+                                        {% if plee.person == member.full_name %}
+                                            {% if member.profile_picture %}
+                                                <li><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{{ member.profile_picture.url }}" class="circle responsive-img" alt="image" width="70px" height="70px" style="margin-bottom: -20px; margin-right: 10px;"><span class="chip">{{ member.full_name }}</span></a><br><p class="blue-grey lighten-2 black-text" style="margin-left: 80px; padding: 10px;">{{ plee.pledge }}
+                                                {% if member.full_name == user.full_name %}
+                                                    <a href="{% url 'church:deletepledge' username groups.group plee.person %}" class="secondary-content"><i class="material-icons blue-text text-darken-3">delete</i></a></li>
+                                                {% endif %}
+                                                </p><br><br>
+                                            {% else %}
+                                                {% if member.gender == 'M' %}
+                                                    <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{% static 'images/male.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;"><span class="chip">{{ member.full_name }}</span></a><span class="chip">{{ member.full_name }}</span></a><br><p class="blue-grey lighten-2 black-text" style="margin-left: 80px; padding: 10px;">{{ plee.pledge }}
+                                                    {% if member.full_name == user.full_name %}
+                                                        <a href="{% url 'church:deletepledge' username groups.group plee.person %}"><i class="material-icons blue-text text-darken-3">delete</i></a></li>
+                                                    {% endif %}
+                                                    </p><br><br>
+                                                 {% else %}
+                                                    <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group member.full_name %}" class="white-text"><img src="{% static 'images/female.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;"><span class="chip">{{ member.full_name }}</span></a><span class="chip">{{ member.full_name }}</span></a><br><p class="blue-grey lighten-2 black-text" style="margin-left: 80px; padding: 10px;">{{ plee.pledge }}
+                                                    {% if member.full_name == user.full_name %}
+                                                        <a href="{% url 'church:deletepledge' username groups.group plee.person %}"><i class="material-icons blue-text text-darken-3">delete</i></a></li>
+                                                    {% endif %}
+                                                    </p><br><br>
+                                                 {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                            {% else %}
+                                No pledges made
+                            {% endif %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+        <a href="{% url 'church:groups' username%}" class="btn-floating waves-effect waves-light teal darken-3 halfway-fab"><i class="material-icons">done</i></a>
+        <div id="aspirants" class="transparent" style="height: 170px;"></div>
+        <div class="card-content white-text">
+            <div class="container left-align">
+                <ul class="collectiion with-header">
+                    <li class="collection-header"><h4>Aspirants</h4><p class="black-text"><a href="#members" class="btn-flat black-text blue-grey">MEMBERS</a> <a href="#pledges" class="btn-flat black-text blue-grey">PLEDGES</a></p></li>
+                    <div class="card-panel blue-grey darken-2 scrollspy">
+
+                    {% for tmember in members %}
+                        {% for grup in tmember.chosengroup_set.all %}
+                            {% if grup.group == groups.group %}
+                                {% if tmember.profile_picture %}
+                                    <li><a href="{% url 'church:memberdetails' username groups.group tmember.full_name %}" class="white-text"><img src="{{ tmember.profile_picture.url }}" class="circle responsive-img" alt="image" width="70px" height="70px" style="margin-bottom: -20px; margin-right: 10px;">{{ grup.user }}</a>
+                                        {% if tmember.full_name == user.full_name %}
+                                            <a href="{% url 'church:exitgroup' username grup.user groups.group %}"><i class="material-icons blue-text right">delete</i></a></li>
+                                        {% endif %}
+                                    <br><br>
+                                {% else %}
+                                    {% if tmember.gender == 'M' %}
+                                        <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group tmember.full_name %}" class="white-text"><img src="{% static 'images/male.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;">{{ grup.user }}</a>
+                                        {% if tmember.full_name == user.full_name %}
+                                            <a href="{% url 'church:exitgroup' username grup.user groups.group %}"><i class="material-icons blue-text right">delete</i></a></li>
+                                        {% endif %}
+                                        <br><br>
+                                    {% else %}
+                                        <li class="collection-item"><a href="{% url 'church:memberdetails' username groups.group tmember.full_name %}" class="white-text"><img src="{% static 'images/female.jpg' %}" class="circle responsive-img" alt="image" width="60px" height="60px" style="margin-bottom: -20px; margin-right: 10px;">{{ grup.user }}</a>
+                                        {% if tmember.full_name == user.full_name %}
+                                            <a href="{% url 'church:exitgroup' username grup.user groups.group %}"><i class="material-icons blue-text right">delete</i></a></li>
+                                        {% endif %}
+                                        <br><br>
+                                     {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                </ul>
+{#                <a href="{% url 'church:addgroup' %}" class="btn white-text">Join</a>#}
+            </div>
+        </div>
+    </div>
+{% endblock %}

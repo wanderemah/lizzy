@@ -1,0 +1,241 @@
+
+{% extends 'base.html' %}
+{% block title %}Contacts{% endblock %}
+{% block style %}
+    <style>
+.container{
+	width: 90%;
+}
+.content{
+    padding: 30px;
+}
+header h1{
+	color: #fff;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.accordion{
+	background: #333;
+	width: 100%;
+	min-width: 800px;
+	display: block;
+	list-style-type: none;
+	overflow: hidden;
+	height: 200px;
+	font-size: 0px;
+}
+.tab{
+	display: inline-block;
+	background-color: #444;
+	border-right: #333 solid 1px;
+	width: 80px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	margin: 0px;
+	transition: all 0.5s ease-in-out 0.1s;
+}
+.tab:hover{
+	width: 450px;
+}
+.tab:hover .social a:before{
+	margin-left: -100px;
+}
+.tab:hover .social a:after{
+	margin-left: 0px;
+}
+.tab .content{
+	background-color: #fff;
+	width: 360px;
+	height:200px;
+	margin-left: 100px;
+	position: relative;
+	padding: 50px 0 0 15px;
+}
+.tab .content h1{
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+
+}
+.tab .content p{
+	font-size: 0.85rem;
+	line-height: 1.4rem;
+	padding-right: 30px;
+}
+.youtube a:after{
+	content: "Y";
+	background-color: red;
+    font-weight: bolder;
+}
+.youtube a:before{
+	content: "Y";
+    font-weight: bolder;
+}
+.instagram a:after{
+	content: "I";
+	background-color: #6dc993;
+    font-weight: bolder;
+}
+
+.instagram a:before{
+	content: "I";
+    font-weight: bolder;
+}
+.twitter a:after{
+	content: "t";
+	background-color: #69c5dd;
+    font-weight: bolder;
+}
+.twitter a:before{
+	content: "t";
+    font-weight: bolder;
+}
+.facebook a:after{
+	content: "f";
+	background-color: blue;
+    font-weight: bolder;
+}
+.facebook a:before{
+	content: "f";
+    font-weight: bolder;
+}
+ .social a:after{
+ 	transition: 0.2s ease-in-out 0.1s;
+	width:100px;
+	height: 200px;
+	position: absolute;
+	text-indent: 0;
+	padding-top: 80px;
+	padding-left: 20px;
+	display: block;
+	font-size: 48px;
+	margin-left: 100px;
+	color: #fff;
+}
+.social a:before{
+	transition: 0.2s ease-in-out 0.1s;
+	width:80px;
+	height: 200px;
+	position: absolute;
+	text-indent: 0;
+	padding-top: 90px;
+	padding-left: 25px;
+	display: block;
+	font-size: 30px;
+	color: #fff;
+}
+
+
+@media(max-width: 950px){
+	.container{
+		width: 70%;
+		overflow: visible;
+	}
+	.tab{
+		display: block;
+		width: 100%;
+		border-bottom: 3px #333 solid;
+	}
+	.accordion{
+		display: block;
+		min-width: 450px;
+		height: 800px;
+        overflow-x: scroll;
+        overflow-y: scroll;
+
+	}
+	.tab .content{
+		width: 95%;
+		padding-right: 30px;
+		overflow: visible;
+	}
+	.tab:hover{
+		width: 100%;
+	}
+
+}
+
+@media(max-width:680px){
+	.container{
+		width: 95%;
+		overflow: visible;
+	}
+	.tab{
+		display: block;
+		width: 100%;
+		border-bottom: 3px #333 solid;
+	}
+	.accordion{
+		display: block;
+		min-width: 200px;
+		height: auto;
+		width: 100%;
+        overflow-x: scroll;
+        overflow-y: scroll;
+
+	}
+	.tab .content{
+		width: 95%;
+		padding-right: 30px;
+		overflow: visible;
+	}
+	.tab:hover{
+		width: 100%;
+	}
+
+}
+
+</style>
+{% endblock %}
+{% block content %}
+<!-- target is to help the a tag link open up on a separate tab -->
+    <div class="container" style="margin-bottom: 10px; margin-top: 0px; padding-top: 3px; background-color: rgba(89,87,85,0);">
+        <h3 class="center-align yellow-text text-darken-3"><em>OMSOM</em></h3>
+        <p class="center-align white-text">P.O.Box 58<br>Ntinda, Kampala</br>omsominternational@gmail.com<br>+256 786 553 303,   +256 751 723 662</p
+	<div class="container" style="padding: 10px 40px 40px 40px;  background-color: rgba(0,0,0,0.2);">
+		<ul class="accordion center-align" style="padding: 20px 20px 20px 30px; height: 320px; background-color: rgba(0,0,0,0.6);">
+            <h5 class="center-align white-text">Follow us on social media</h5>
+			<li class="tab">
+				<div class="social youtube">
+					<a href="http://www.youtube.com" target="_blank">Youtube</a>
+				</div>
+				<div class="content">
+					<h1>youtube</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde pariatur, officia. Enim, quidem dolor ex recusandae dignissimos quam aliquam porro.</p>
+				</div>
+
+			</li>
+			<li class="tab">
+				<div class="social twitter">
+					<a href="http://www.twitter.com" target="_blank">twitter</a>
+				</div>
+				<div class="content">
+					<h1>twitter</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde pariatur, officia. Enim, quidem dolor ex recusandae dignissimos quam aliquam porro.</p>
+				</div>
+
+			</li>
+			<li class="tab">
+				<div class="social facebook">
+					<a href="http://www.facbook.com" target="_blank">facebook</a>
+				</div>
+				<div class="content">
+					<h1>facebook</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde pariatur, officia. Enim, quidem dolor ex recusandae dignissimos quam aliquam porro.</p>
+				</div>
+
+			</li>
+			<li class="tab">
+				<div class="social instagram">
+					<a href="http://www.instagram.com" target="_blank">instagram</a>
+				</div>
+				<div class="content">
+					<h1>instagram</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde pariatur, officia. Enim, quidem dolor ex recusandae dignissimos quam aliquam porro.</p>
+				</div>
+
+			</li>
+		</ul>
+	</div>
+        </div>
+{% endblock %}

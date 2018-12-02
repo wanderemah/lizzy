@@ -1,0 +1,104 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <script src="{% static 'javascript/jquery-3.3.1.min.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet'>
+	<link rel="stylesheet" type="text/css" href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/materialize.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/genericons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/swiper.min.css' %}">
+    <script src="{% static 'javascript/materialize.min.js' %}"></script>
+
+{% block style %}{% endblock %}
+</head>
+<body>
+<ul id="mobile-demo" class="side-nav">
+    <li><a href="{% url 'home' %}" class="na"style="margin-right: 30px;">Home</a></li>
+    <li><a href="{% url 'about' %}" class="na" style="margin-right: 30px;">About</a></li>
+    <li><a href="#news" class="na" style="margin-right: 30px;">News</a></li>
+    <li><a href="{% url 'church:eventstaff' %}" class="na" style="margin-right: 30px;">Events</a></li>
+    <li><a href="{% url 'church:members2' %}" class="na" style="margin-right: 30px;">Leadership</a></li>
+    <li><a href="{% url 'contacts2' %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+    <li><a href="{% url 'login' %}" class="na" style="margin-right: 30px;">Log in</a></li>
+    <li><a href="{% url 'church:signup' %}" class="na" style="margin-right: 20px;">Sign up</a></li>
+</ul>
+<nav class="stack" style="z-index: 2;">
+    <div class="nav-wrapper black lighten-5">
+{#        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>#}
+        <span class="slogo transparent" style="border-style: solid; border-width: 0px 0px 0px 2px; border-color: grey;"><a href="{% url 'home' %}" class="brand-logo logo blue-text" style="font-size: 30px;">OMSOM</a></span>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down" id="nav-mobile">
+            <li><a href="{% url 'home' %}" class="na"style="margin-right: 30px;">Home</a></li>
+            <li><a href="{% url 'about' %}" class="na" style="margin-right: 30px;">About</a></li>
+{#            <li><a href="#news" class="na" style="margin-right: 30px;">News</a></li>#}
+            <li><a href="{% url 'church:eventstaff' %}" class="na" style="margin-right: 30px;">Events</a></li>
+            <li><a href="{% url 'church:members2' %}" class="na" style="margin-right: 30px;">Leadership</a></li>
+            <li><a href="{% url 'contacts2' %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+            <li><a href="{% url 'login' %}" class="btn teal lighten-2 waves-effect waves-light waves-teal na" style="margin-right: 30px;">Log in</a></li>
+            <li><a href="{% url 'church:signup' %}" class="btn teal lighten-2 waves-effect waves-light waves-teal na" style="margin-right: 20px;">Sign up</a></li>
+        </ul>
+        <ul id="mobile-demo" class="side-nav">
+            <li><a href="{% url 'home' %}" class="na"style="margin-right: 30px;">Home</a></li>
+            <li><a href="{% url 'about' %}" class="na" style="margin-right: 30px;">About</a></li>
+            <li><a href="{% url 'church:eventstaff' %}" class="na" style="margin-right: 30px;">Events</a></li>
+            <li><a href="{% url 'church:members2' %}" class="na" style="margin-right: 30px;">Leadership</a></li>
+            <li><a href="{% url 'contacts2' %}" class="na" style="margin-right: 10px;">Contacts</a></li>
+            <li><a href="{% url 'login' %}" class="na" style="margin-right: 30px;">Log in</a></li>
+            <li><a href="{% url 'church:signup' %}" class="na" style="margin-right: 20px;">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+{% block home %}{% endblock %}
+{#<div class="fixed-action-btn">#}
+{#    <a href="#" class="btn-floating blue hoverable btn-large"><i class="material-icons large">settings</i></a>#}
+{#    <ul>#}
+{#        <li><a href="{% url 'admin:index' %}" class="btn-floating  teal lighten-4 btn-large"><i class="material-icons large">admin</i></a></li>#}
+{#        <li><a href="{% url 'logout' %}" class="btn-floating teal lighten-1 btn-large"><i class="material-icons large">logout</i></a></li>#}
+{#    </ul>#}
+{#</div>#}
+
+{% block content %}
+
+{% endblock %}
+<div class="page-footer" style="background-color: rgba(0,0,0,0.5); padding: 20px; margin-top: -150px; height: 150px;"><p class="white-text center-align">©<span style="font-size: 20px; padding:3px;">OMSOM</span>
+    <br> <br>designed by
+    <a href="https://plus.google.com/114477343094652939596" class="blue-text text-lighten-3" style=" font-family: Comic Sans MS;" target="_blank"><b>fatboyWeb</b></a></p></div>
+
+     <script src="{% static 'javascript/swiper.min.js' %}"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+		    $(window).scroll(function(){
+                parallax();
+            });
+            function parallax(){
+                var scrolldis = ($(window).scrollTop());
+                $(".para1").css({"background-position":"center "+ (scrolldis*0.1)+"px"});
+                $(".para2").css({"background-position":"center "+ (scrolldis*0.3)+"px"});
+                $("#para").css({"margin-top":"-"+(scrolldis*0.85)+"px","height":500-(scrolldis/10)+"px"});
+  	        }
+
+			$(".button-collapse").sideNav();
+			$(".slider").slider({full_wiidth:true, indicators:false, transition:500, interval:6000, height: 500});
+			$(".fixed-action-button").floatingActionButton();
+			$(".parallax").parallax();
+			$(".carousel").carousel();
+			$(".carousel.carousel-slider").carousel({full_width:true});
+			$(".modal").modal();
+			$(".autocomplete").autocomplete({
+				data:{"aruba":null,"cancun":null,"hawai":null}
+			});
+			$(".scrollspy").scrollspy();
+
+
+
+
+		});
+	</script>
+</body>
+</html>

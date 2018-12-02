@@ -1,0 +1,35 @@
+from django.conf.urls import url
+from . import views
+
+app_name = 'church'
+urlpatterns = [
+    url(r'^events/staff', views.docket1, name='eventstaff'),
+    url(r'^(?P<username>\w+)/events/members', views.docket2, name='eventmember'),
+    url(r'^signup', views.Sign_up.as_view(), name='signup'),
+    url(r'^add_activity/', views.Action.as_view(), name='addactivity'),
+    url(r'^(?P<username>\w+)/member/incharge/(?P<tutor>\D+)$', views.tutor_detail_member, name='persondetails1'),
+    url(r'^staff/incharge/(?P<tutor>\D+)$', views.tutor_detail_staff, name='persondetails2'),
+    url(r'^(?P<username>\w+)/(?P<group>\D+)/member/(?P<tutor>\D+)$', views.member_detail, name='memberdetails'),
+    url(r'^(?P<username>\w+)/query', views.Question.as_view(), name='query'),
+    url(r'^(?P<username>\w+)/response', views.Respond.as_view(), name='repond'),
+    url(r'^(?P<username>\w+)/exit_group/(?P<user>\D+)/(?P<group>\D+)$', views.exit, name='exitgroup'),
+    url(r'^(?P<username>\w+)/(?P<group>\D+)/delete_pledge/(?P<user>\D+)$', views.expel, name='deletepledge'),
+    url(r'^(?P<username>\w+)/groups', views.groups, name='groups'),
+    url(r'^(?P<username>\w+)/group/(?P<group>\D+)$', views.detailgroup, name='detailgroup'),
+    url(r'^(?P<username>\w+)/tools/(?P<group>\D+)$', views.grouptool, name='grouptools'),
+    url(r'^(?P<username>\w+)/(?P<group>\D+)/join_group', views.Creategroup.as_view(), name='addgroup'),
+    url(r'^(?P<username>\w+)/leadership2', views.member, name='members'),
+    url(r'^leadership', views.member2, name='members2'),
+    url(r'^services/(?P<username>\D+)$', views.service, name='service'),
+    url(r'^(?P<username>\w+)/(?P<service>\D+)/services', views.servicedetail, name='servicedetails'),
+    url(r'^(?P<username>\w+)/video_gallery', views.videos, name='videos'),
+    url(r'^(?P<username>\w+)/audio_gallery', views.audios, name='audios'),
+    url(r'^(?P<username>\w+)/documents', views.documents, name='documents'),
+    url(r'^(?P<username>\w+)/image_gallery', views.images, name='images'),
+    url(r'^(?P<username>\w+)/profile', views.profile, name='profile'),
+    url(r'^(?P<username>\w+)/attendance/(?P<event>[A-Za-z0-9 ]+)$', views.Attendance.as_view(), name='attendance'),
+    url(r'^(?P<username>\w+)/delete_query/(?P<name>\D+)/(?P<pk>[A-Za-z0-9 ]+)$', views.deletequery, name='deletequery'),
+    url(r'^(?P<username>\w+)/delete_response/(?P<name>\D+)/(?P<answer>[A-Za-z0-9 ]+)$', views.deleteresponse, name='deleteresponse'),
+    url(r'^(?P<pk>\D+)/edit_profile', views.UpdateProfile.as_view(), name='update'),
+    url(r'^(?P<username>\w+)/pledge/(?P<group>\D+)$', views.Pledges.as_view(), name='pledge'),
+]

@@ -1,0 +1,260 @@
+
+{% extends 'base2.html' %}
+{% block title %}Home{% endblock %}
+{% block home %}
+    {% load static from staticfiles %}
+		<div class="slider" style="z-index: -1;">
+			<ul class="slides">
+				<li>
+                    <img src="{% static 'images/electric_guitar_instrument_string_17845_1920x1080.jpg' %}" alt="img">
+					<div class="caption center-align">
+						<h4 style="margin-top: 110px; font-weight: bold;" class="blue-text">ONE MORE SOUL OUTREACH MINISTRIES INTERNATIONAL</h4>
+						<h5 class="light grey-text text-lighten-5" style="margin-top: 90px;">Touch One, Touch All</h5>
+					</div>
+				</li>
+                <li>
+					<img src="{% static 'images/skater-821502.jpg' %}" alt="img">
+					<div class="caption left-align">
+						<h3 class="red-text">OMSOM</h3>
+                        <h5 class="light white-text text-darken-3">Youth ministries</h5>
+					</div>
+				</li>
+                <li>
+					<img src="{% static 'images/multi-ethnic-young-adults-in-a-bible-study-church-group-picture-id174792161.jpeg' %}" alt="img">
+					<div class="caption right-align">
+						<h3 class="white-text">Lots of activities</h3>
+						<h5 class="light grey-text text-lighten-3">Music, dance, drama, prayer, outreach</h5>
+					</div>
+				</li>
+                <li>
+					<img src="{% static 'images/love_keyboard_heart_letter_102483_1920x1080.jpg' %}" alt="img">
+					<div class="caption center-align">
+						<h3 class="teal-text">Learn to love the lord as a youth</h3>
+						<h5 class="light black-text">A heart after Jesus</h5>
+					</div>
+				</li>
+                <li>
+					<img src="{% static 'images/love_happiness_white_red_4373_1920x1080.jpg' %}" alt="img">
+					<div class="caption left-align">
+						<h3 class="black-text">Happiness in Christ</h3>
+						<h5 class="brown-text">Enduring smile</h5>
+					</div>
+				</li>
+			</ul>
+		</div>
+	<div class="section white" id="para" style="z-index: 2;">
+		<div class="row container para4">
+			<h3 class="header center-align blue-text" id="title">ONE MORE SOUL OUTREACH MINISTRIES <br><br><img src="{% static 'images/FB_IMG_1534414706878.jpg' %}" alt="img" height="90px" width="90px" class="responsive-img image"></h3>
+            <h5 class="center-align orange-text text-darken-4" style="margin-top: -25px;" id="acr">OMSOM</h5>
+            <p class="grey-text center-align text-darken-3"><b><a href="{% url 'church:signup' %}" class="grey-text text-darken-4">Sign up</a></b> to become a member and enjoy more features like chart rooms, services, galleries and so much more. <br>If you are a member already, <b><a href="{% url 'login' %}" class="grey-text text-darken-4">log in</a></b> to access these awesome features. On this page, you will find <b><a href="#news" class="grey-text text-darken-4">news</a></a></b> about various OMSOM activities. </p>
+            <p class="center-align">
+                <a href="{% url 'about' %}" class="btn btn-large orange darken-2 black-text z-depth-3 white-text center">About Us</a>
+            </p>
+		</div>
+	</div>
+	<div class="para1" style="z-index: 0; height: 500px; background-image: url('/static/images/youth.png'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+        <div style="background-color: rgba(0,0,0,0.3); height: 500px; margin-top: -15px;"></div>
+    </div>
+    <div class="section white darken-4" style="z-index: 2;" id="news">
+		<div class="row container">
+            {% if message %}
+                {% for verse in message %}
+                <h3 class="header center-align orange-text text-darken-4 scrollspy"><em>"{{ verse.message }}"</em></h3>
+                {% endfor %}
+            {% endif %}
+		</div>
+	</div>
+    <div class="white" style="padding-bottom: 0px;">
+        <div id="new" style="background: linear-gradient( to bottom, rgba(0,0,0,0.5),rgba(0,0,0,0.7)); margin-top: -15px; padding-top: 40px; height: auto; padding-left: 165px; margin-right: 0px;">
+        <div style="display: table-cell; padding: 20px;" class="transparent">
+        {% for new in news %}
+            <a href="#n{{ forloop.counter }}" class="modal-trigger">
+                <div style="border-style: solid; border-color: transparent; border-bottom-width: 50px; width: 310px; height: 270px; display: table-cell;" class="transparent new">
+                   <div class="white darken-4 z-depth-3 hoverable" style="width: 300px; height: 330px; margin-bottom: 20px; padding: 20px; display: table-cell;">
+                       {% for photo in new.newsimages_set.all %}
+                           {% if forloop.counter == 1 %}
+                             <img src="{{ photo.image.url }}" alt="image" class="responsive-img" style="height: 150px; width: 260px;"><br>
+                           {% endif %}
+                        {% endfor %}
+                        <h5 class="blue-text center-align">{{ new.title }}</h5>
+                            <div class="black-text">
+                                <p>{{ new.details|truncatewords:15 }}</p>
+                            </div>
+
+                    </div>
+                </div>
+            </a>
+            <span style="width: 50px;" class="transparent-text">......................</span>
+            <div id="n{{ forloop.counter }}" class="modal">
+                        <div class="modal-content">
+                            <h3 class="blue-text center-align">{{ new.title }}</h3>
+                            <p class="black-text">{{ new.details }}</p>
+                            {% for photo in new.newsimages_set.all %}
+                                <div class="card blue-grey darken-1 hoverable" style="display: inline-block; margin-right: 10px;">
+                                        <div class="card-content white-text">
+                                            <img src="{{ photo.image.url }}" alt="image" class="responsive-img" style="height: 230px; width: 230px;"><br>
+                                        </div>
+                                    </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+        {% endfor %}
+        </div>
+        </div>
+    </div>
+    <div class="section para2" style="z-index: 0; height: 500px; background-image: url('/static/images/Youth.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; border-width: 0px;">
+        <div style="background-color: rgba(0,0,0,0.7); height: 500px; margin-top: -15px; padding-top: 100px;" class="center-align conc">
+            <ul class="white-text">
+                <li><a href="{% url 'home' %}" class="na">Home</a></li>
+                <li><a href="{% url 'about' %}" class="na">About</a></li>
+{#                <li><a href="#news" class="na">News</a></li>#}
+                <li><a href="{% url 'church:eventstaff' %}" class="na">Events</a></li>
+                <li><a href="{% url 'church:members2' %}" class="na">Leadership</a></li>
+                <li><a href="{% url 'contacts2' %}" class="na">Contacts</a></li>
+                <li><a href="{% url 'login' %}" class="na">Log in</a></li>
+                <li><a href="{% url 'church:signup' %}" class="na">Sign up</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <style>
+        @media(max-width:1060px) {
+            .para2{
+                 margin-top: 1px;
+            }
+        }
+        @media(max-width:1045px) {
+            .para2{
+                 margin-top: 1px;
+            }
+        }
+        @media(max-width:1040px) {
+            .para2{
+                 margin-top: 1px;
+            }
+        }
+        @media(max-width:1030px) {
+            .para2{
+                 margin-top: 1px;
+            }
+        }
+
+        @media(max-width:980px) {
+            .para2{
+                 margin-top: 1px;
+            }
+        }
+
+        @media(max-width:880px) {
+            .para2{
+                 margin-top: 1px;
+            }
+
+        }
+
+        @media(max-width:780px) {
+            .para2{
+                 margin-top: 1px;
+            }
+            .new{
+                display: table-cell;
+                float: none;
+            }
+            #new{
+                padding-left: 0px;
+                margin-left: -50px;
+
+            }
+        }
+        @media(max-width:680px) {
+            .para2{
+                 margin-top: 1px;
+            }
+            .new{
+                display: block;
+                float: none;
+            }
+            #new{
+                padding-left: 0px;
+                margin-left: -50px;
+
+            }
+        }
+
+
+        @media(max-width:580px) {
+            #acr{
+                font-size: 18px;
+                padding-top: 10px;
+            }
+            #title{
+                font-size: 30px;
+            }
+            .para2{
+                 margin-top: 1px;
+            }
+            .new{
+                display: block;
+                float: none;
+            }
+            #new{
+                padding-left: 0px;
+                margin-left: -100px;
+
+            }
+        }
+
+        @media(max-width:480px) {
+            #acr{
+                font-size: 16px;
+                padding-top: 8px;
+            }
+            #title{
+                font-size: 27px;
+            }
+            .para2{
+                 margin-top: 1px;
+            }
+            .new{
+                display: block;
+                float: none;
+            }
+            #new{
+                padding-left: 0px;
+                margin-left: -125px;
+
+            }
+        }
+
+        @media(max-width:390px) {
+            #acr{
+                font-size: 14px;
+                padding-top: 10px;
+            }
+            #title{
+                font-size: 25px;
+            }
+
+            .conc{
+                margin-top: -20px;
+            }
+            .para2{
+                 margin-top: 1px;
+            }
+            .new{
+                display: block;
+                float: none;
+            }
+            #new{
+                padding-left: 0px;
+                margin-left: -150px;
+            }
+            .image{
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+
+{% endblock %}

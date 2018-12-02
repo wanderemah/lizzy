@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Documents{% endblock %}
+{% block content %}
+    {% if documents %}
+        <div class="container" style="margin-bottom: 330px;">
+        {% for document in documents %}
+             <div class="card blue-grey darken-1 hoverable">
+                <div class="card-content white-text">
+                    <a href="{{ document.doc.url }}" target="_blank"><i class="material-icons left" style="font-size: 40px;">folder</i><p class="white-text" style="padding-left: 40px; font-size: 23px;">{{ document.description }}</p></a><br>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        No audios
+    {% endif %}
+    </div>
+{% endblock %}

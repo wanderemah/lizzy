@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{ username }}{% endblock %}
+{% block content %}
+    {% load static from staticfiles %}
+    {% if person %}
+         <div class="container transparent" style="margin-bottom: 200px;">
+            <div class="card-content white-text">
+                {% if person.profile_picture %}
+                    <h3 class="center"><img src="{{ person.profile_picture.url }}" width="150px" height="150px" style="margin-bottom: -75px; margin-right: 10px;" alt="profile_picture" class="circle responsive-img materialboxed" data-caption="{{ person.full_name }}">{{ person.full_name }}</h3>
+                {% else %}
+                    {% if person.gender == 'M' %}
+                        <h3 class="center"><img src="{% static 'images/male.jpg' %}" width="130px" height="130px" style="margin-bottom: -80px; margin-right: 10px;" alt="profile_picture" class="circle responsive-img materialboxed" data-caption="{{ person.full_name }}">{{ person.full_name }}</h3>
+                     {% else %}
+                        <h3 class="center"><img src="{% static 'images/female.jpg' %}" width="130px" height="130px" style="margin-bottom: -80px; margin-right: 10px;" alt="profile_picture" class="circle responsive-img materialboxed" data-caption="{{ person.full_name }}">{{ person.full_name }}</h3>
+                     {% endif %}
+                {% endif %}
+                <div style="background-color: rgba(0,0,0,0.7);" class="z-depth-2">
+                    <section class="teal lighten-1 white-text" style="padding: 20px;">
+                        {{ person.nationality }}<br>{{ person.relationship_status }}<br>{{ person.occupation }}<br>
+                    </section>
+                    <div style="margin-top: 50px;" class="container">
+                        <em>{{ person.profile }}</em><br><br>
+                        <p class="right-align transparent white-text">
+                    </div>
+                    <div class="card-panel blue-grey lighten-1" style="padding: 10px;">
+                        <p class="center-align">
+                            {{ person.address }}<br>{{ person.email }}<br>{{ person.tel_number }}<br>
+{#                            <a href="{% url 'church:detailgroup' username group.group %}" class="btn-floating waves-effect waves-light teal darken-3 right" style="margin-bottom: -20px; margin-right: 20px;"><i class="material-icons">done</i></a>#}
+                        </p>
+                        <p class="center-align"><a href="{% url 'church:update' person.full_name %}" class="btn blue darken-3 waves-effect hoverable z-depth-3">Update Profile</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        Person Not found
+    {% endif %}
+
+{% endblock %}

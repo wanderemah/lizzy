@@ -1,0 +1,66 @@
+{% extends 'general.html' %}
+{% block title %}Events{% endblock %}
+{% block content %}
+    {% load static from staticfiles %}
+{#<div class="fixed-action-btn">#}
+{#        <a href="{% url 'logout' %}" class="btn teal lighten-2 white-text btn-large">Log out</a>#}
+{#</div>#}
+<div class="fixed-action-btn">
+    <a href="#" class="btn-floating teal darken-4 btn-large z-depth-3"><i class="material-icons large">settings</i></a>
+    <ul>
+{#        <li><a href="{% url 'admin:index' %}" class="btn-floating black btn-large" style="font-size: 12px;">admin</a></li>#}
+        <li><a href="{% url 'login' %}" class="btn-floating teal lighten-2 btn-large" style="font-size: 12px;">log in</a></li>
+        <li><a href="{% url 'church:signup' %}" class="btn-floating brown btn-large" style="font-size: 11px;">Sign up</a></li>
+    </ul>
+</div>
+{#<button><a href="{% url 'logout' %}">Log out</a></button>#}
+<br><br><br>
+        <div class="container transparent darken-1" style="margin-bottom: 100px;">
+			<div class="card-content white-text">
+                {% for event in events %}
+                <ul class="collection z-depth-3"  style="padding: 5px;">
+                    <li class="collection-item avatar purple darken-4" style="border-style: solid; border-width: 0px; padding-left: 250px; padding-top: 25px; padding-bottom: 30px;">
+                        {% if event.poster %}
+                            <img src="{{ event.poster.url }}" alt="image" class="circle materialboxed responsive-img" style="height: 200px; width: 200px;">
+                        {% else %}
+                            <img src="{% static 'images/event2.jpg' %}" alt="image" style="height: 200px; width: 200px;" class="responsive-img materialboxed circle" data-caption="{{ event.event }}">
+                        {% endif %}
+                        <h2><a href="#e{{ forloop.counter }}" class="white-text modal-trigger">{{ event.event|truncatewords:4 }}</a></h2>
+                        <p class="">{{ event.date|date:'l, dS F, Y' }}<br>{{ event.date|date:'H:i:s A' }}<br><br>Organiser :   {{ event.person_in_charge|truncatewords:2 }}<br><br>Venue :  <a href="#{{ forloop.counter }}" class="white-text modal-trigger">{{ event.venue }}</a></p>
+                    </li>
+		        </ul><br><br>
+                <div id="{{ forloop.counter }}" class="modal">
+                    <div class="modal-content">
+                        <h4 class="black-text">{{ event.venue }}</h4>
+                        <img src="{{ event.google_maps.url }}" alt="img" width="800px" height="300px">
+                        </div>
+                    </div>
+                    <div id="e{{ forloop.counter }}" class="modal">
+                        <div class="modal-content">
+                            <h4 class="black-text center-align">{{ event.event }}</h4>
+                            <p class="black-text">{{ event.description }}</p><br><br>
+                            {% if event.eventimage_set.all %}
+                                <h5 class="left-align black-text">Images</h5>
+                                {% for photo in event.eventimage_set.all %}
+                                    <div class="card blue-grey darken-1 hoverable" style="display: inline-block; margin-right: 10px;">
+                                        <div class="card-content white-text">
+                                            <img src="{{ photo.image.url }}" alt="image" class="responsive-img" data-caption="{{ photo.description }}" style="height: 230px; width: 230px;"><br>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div id="a{{ forloop.counter }}" class="modal">
+                        <div class="modal-content">
+                            <h4 class="black-text">{{ event.event }}</h4>
+                            {% for you in event.attendancelist_set.all %}
+                                <div class="black-text chip">{{ you.person }}</div><br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+			</div>
+		</div>
+
+{% endblock %}

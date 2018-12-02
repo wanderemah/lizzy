@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Video Gallery{% endblock %}
+{% block content %}
+    <div class="container" style="margin-bottom: 278px;">
+    {% if videos %}
+        {% for vid in videos %}
+             <div class="card blue-grey hoverable">
+                <div class="card-content white-text">
+                    <video controls class="materialboxed responsive-video" height="200px" width="200px"><source src="{{ vid.video.url }}" type="video/MP4"></video><div style="font-size: 20px; padding: 30px 30px 0px 20px; display: inline-block;">{{ vid.description }}</div><br>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        No videos
+    {% endif %}
+    </div>
+{% endblock %}

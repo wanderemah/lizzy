@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% block title %}Services{% endblock %}
+{% block content %}
+    <div class="card blue-grey darken-2" style="margin-bottom: 200px; margin-top: 50px;">
+        <div class="card-content white-text">
+            <div class="container left-align">
+                <ul class="collectiion with-header">
+                    <li class="collection-header"><h3>Services</h3></li>
+                    <div class="card-panel teal">
+                    {% for offer in services %}
+                        <li class="collection-item chip"><a href="{% url 'church:servicedetails' username offer.service %}">{{ offer.service }}</a></li><br>
+{#                        <a href="{% url 'church:deletemember' member.user %}"><i class="material-icons white-text">delete</i></a><br>#}
+                    {% endfor %}
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
